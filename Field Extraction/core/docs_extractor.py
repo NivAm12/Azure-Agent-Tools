@@ -38,7 +38,7 @@ class DocsExtractor(ABC):
         self.post_processor = post_processor
         
     @abstractmethod
-    async def extract(self, document):
+    def extract(self, document: bytes):
         """
         Extract structured information from a document.
         
@@ -50,11 +50,7 @@ class DocsExtractor(ABC):
         3. Return structured results
         
         Args:
-            document: Document to process. Type depends on implementation:
-                     - bytes: Raw document content
-                     - Document: Structured document object with metadata
-                     - str: File path or base64-encoded content
-                     - PIL.Image: Image object for image-based extractors
+            document: Document to process. Typically a PDF or image file.
         
         Returns:
             Structured extraction results. Format depends on implementation:
