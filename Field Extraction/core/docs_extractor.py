@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from config.config_base import DocsExtractorConfig
 
 class DocsExtractor(ABC):
     """
@@ -14,7 +15,7 @@ class DocsExtractor(ABC):
     - OCR-only extraction (basic text extraction)
     """
     
-    def __init__(self, primary_extractor, post_processor=None):
+    def __init__(self, primary_extractor, post_processor=None, config: DocsExtractorConfig=None):
         """
         Initialize the document extractor with primary and optional secondary components.
         
@@ -33,9 +34,11 @@ class DocsExtractor(ABC):
                           - Quality enhancement and error correction
                           - Language translation or standardization
                           Can be None if primary_extractor handles complete extraction.
+            config: Configuration object for the document extractor.
         """
         self.primary_extractor = primary_extractor
         self.post_processor = post_processor
+        self.config = config
         
     @abstractmethod
     def extract(self, document: bytes):
@@ -54,8 +57,5 @@ class DocsExtractor(ABC):
         
         Returns:
             Structured extraction results. Format depends on implementation:
-            - Dict[str, Any]: Simple key-value structured data
-            - ExtractionResult: Rich result object with metadata and validation
-            - Custom result type specific to the extractor
         """
         pass
