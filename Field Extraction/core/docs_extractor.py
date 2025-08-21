@@ -38,7 +38,7 @@ class DocsExtractor(ABC):
         self.post_processor = post_processor
         
     @abstractmethod
-    def extract(self, document):
+    async def extract(self, document):
         """
         Extract structured information from a document.
         
