@@ -1,0 +1,21 @@
+[project]
+name = "kpmg"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Niv Amos",email = "49129250+NivAm12@users.noreply.github.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "azure-ai-documentintelligence (>=1.0,<2.0)",
+    "openai (>=1.50,<2.0)",
+    "streamlit (>=1.36,<2.0)",
+    "pydantic (>=2.7,<3.0)",
+    "python-dotenv (>=1.0,<2.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
